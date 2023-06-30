@@ -1,20 +1,22 @@
 import Form from './Form';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
-import { Section, Title } from './App.styled';
+import { Container, Section, Title } from './App.styled';
 
 export function App() {
   return (
     <>
-      <Section>
+      <Container>
         <Title>Phonebook</Title>
-        <Form />
-      </Section>
-      <Section>
+        <Section>
+          <Form />
+        </Section>
         <Title>Contacts</Title>
-        <Filter />
-        <ContactsList />
-      </Section>
+        <Section>
+          <Filter />
+          <ContactsList />
+        </Section>
+      </Container>
     </>
   );
 }

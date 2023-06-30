@@ -1,17 +1,15 @@
 // import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addNewContacts } from '../../redux/contactsSlice';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/selectors';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
 import { Label, Input, Button, Container } from './Form.styled';
 
 function Form() {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-
   //обробник button
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,13 +27,19 @@ function Form() {
 
     if (
       !contacts.length ||
-      !contacts.some(contact => contact.name === contactName)
+      !contacts.some(
+        contact =>
+          // contact.contactNumber === contactName ||
+          contact.contactNumber === contactNumber
+      )
     ) {
       form.reset();
       dispatch(addNewContacts(newContact));
+      Notify.success(`${contactNumber} added to contacts`);
     } else {
-      Notify.warning(`${contactName} is already in contacts`);
+      Notify.warning(`${contactNumber} is already in contacts`);
     }
+    // console.log(contacts);
   };
 
   return (
