@@ -6,12 +6,9 @@ const ContactsList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
 
-  const visibleContacts =
-    [
-      ...contacts.filter(contact =>
-        contact.contactName.toLowerCase().includes(filter)
-      ),
-    ] || [];
+  const visibleContacts = contacts.filter(contact =>
+    contact.contactName.toLowerCase().trim().includes(filter)
+  );
   return (
     <ul>
       {visibleContacts.map(({ id, contactName, contactNumber }) => (

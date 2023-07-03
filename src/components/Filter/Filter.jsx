@@ -10,7 +10,7 @@ const Filter = () => {
 
   const changeFilter = e => {
     const target = e.target.value;
-    const normalizedFilter = target.toLowerCase().trim();
+    const normalizedFilter = target.toLowerCase();
     dispatch(filterContacts(normalizedFilter));
   };
   // console.log(value);
