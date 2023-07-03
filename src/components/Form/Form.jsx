@@ -19,12 +19,6 @@ function Form() {
     const contactName = name.value;
     const contactNumber = number.value;
 
-    const newContact = {
-      id: nanoid(),
-      contactName,
-      contactNumber,
-    };
-
     if (
       !contacts.length ||
       !contacts.some(
@@ -33,8 +27,13 @@ function Form() {
           contact.contactNumber === contactNumber
       )
     ) {
-      form.reset();
+      const newContact = {
+        id: nanoid(),
+        contactName,
+        contactNumber,
+      };
       dispatch(addNewContacts(newContact));
+      form.reset();
       Notify.success(`${contactNumber} added to contacts`);
     } else {
       Notify.warning(`${contactNumber} is already in contacts`);
