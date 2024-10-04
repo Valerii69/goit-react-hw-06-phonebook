@@ -14,6 +14,7 @@ const ContactsListItem = ({ id, name, number }) => {
   const deleteContact = id => {
     dispatch(deleteIdContact(id));
   };
+  console.log(name);
   return (
     <ContactItem key={id}>
       <ContactName>
